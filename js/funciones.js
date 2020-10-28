@@ -16,16 +16,11 @@ function cargarDatos(){
         alert("No se encuentra el personaje: " + personaje)
     }
     
-    console.log(personaje)
-
     request.onload = function () {
         try {
             var datos = JSON.parse(this.response);
-            console.log(datos);
             tam = datos["results"].length;
-            // console.log(tam + " " + contador);
             var detalles = "";
-            // var episodios = "";
             var fin = contador + 5;
             for(var i=contador; i<fin; i++){
                 detalles += "<tr>" +
@@ -33,15 +28,8 @@ function cargarDatos(){
                 "<td>" + datos["results"][i].status + "</td>" +
                 "<td>" + datos["results"][i].gender + "</td>" +
                 "<td>" + datos["results"][i].species + "</td>" +
-                
-                // "<td>";
-                // for(var j=0; j<datos["results"][i].origen.length; j++){
-                //    episodios +=  datos["results"][i].origen[j] +
-                //    "<br>";
-                // }
-                // detalles += episodios + "</td>" +
-                
                 "<td>" + datos["results"][i].origin.name + "</td>" +
+                "<td>" + datos["results"][i].location.name + "</td>" +
                 "<td><img src=" + datos["results"][i].image + "></td>" +
                 "</tr>"; 
 
